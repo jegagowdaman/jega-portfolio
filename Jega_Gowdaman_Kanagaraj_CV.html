@@ -1,0 +1,622 @@
+<title>Jega Gowdaman Kanagaraj — Senior HR Professional</title>
+<style>
+  :root {
+    --page-bg: #F1F5FC;
+    --surface: #FFFFFF;
+    --surface-2: #F6F9FE;
+    --ink: #0A1F44;
+    --ink-soft: #45537A;
+    --ink-faint: #8593B8;
+    --accent: #0F52BA;
+    --accent-bright: #2E74E0;
+    --accent-wash: rgba(15,82,186,0.08);
+    --line: rgba(10,31,68,0.12);
+    --line-strong: rgba(10,31,68,0.26);
+    --shadow: 0 1px 2px rgba(10,31,68,0.06), 0 10px 28px -14px rgba(10,31,68,0.28);
+    --nav-bg: rgba(255,255,255,0.86);
+
+    --font-display: Georgia, 'Iowan Old Style', 'Palatino Linotype', 'URW Palladio L', serif;
+    --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Helvetica Neue', Arial, sans-serif;
+    --font-mono: ui-monospace, 'Cascadia Code', 'SF Mono', Consolas, 'Liberation Mono', monospace;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-bg: #060D1F;
+      --surface: #0D1830;
+      --surface-2: #101C38;
+      --ink: #E7ECF7;
+      --ink-soft: #A9B7D6;
+      --ink-faint: #6C7BA0;
+      --accent: #4E8FEF;
+      --accent-bright: #6FA6FF;
+      --accent-wash: rgba(78,143,239,0.12);
+      --line: rgba(231,236,247,0.12);
+      --line-strong: rgba(231,236,247,0.26);
+      --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 12px 32px -14px rgba(0,0,0,0.6);
+      --nav-bg: rgba(13,24,48,0.86);
+    }
+  }
+  :root[data-theme="dark"] {
+    --page-bg: #060D1F; --surface: #0D1830; --surface-2: #101C38;
+    --ink: #E7ECF7; --ink-soft: #A9B7D6; --ink-faint: #6C7BA0;
+    --accent: #4E8FEF; --accent-bright: #6FA6FF; --accent-wash: rgba(78,143,239,0.12);
+    --line: rgba(231,236,247,0.12); --line-strong: rgba(231,236,247,0.26);
+    --shadow: 0 1px 2px rgba(0,0,0,0.35), 0 12px 32px -14px rgba(0,0,0,0.6);
+    --nav-bg: rgba(13,24,48,0.86);
+  }
+  :root[data-theme="light"] {
+    --page-bg: #F1F5FC; --surface: #FFFFFF; --surface-2: #F6F9FE;
+    --ink: #0A1F44; --ink-soft: #45537A; --ink-faint: #8593B8;
+    --accent: #0F52BA; --accent-bright: #2E74E0; --accent-wash: rgba(15,82,186,0.08);
+    --line: rgba(10,31,68,0.12); --line-strong: rgba(10,31,68,0.26);
+    --shadow: 0 1px 2px rgba(10,31,68,0.06), 0 10px 28px -14px rgba(10,31,68,0.28);
+    --nav-bg: rgba(255,255,255,0.86);
+  }
+
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--accent-bright); }
+  a:focus-visible, button:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: 3px; }
+  button { font: inherit; }
+
+  section, .hero { scroll-margin-top: 4.75rem; }
+
+  /* ---------------- Sticky nav ---------------- */
+  .topnav {
+    position: sticky; top: 0; z-index: 20;
+    background: var(--nav-bg);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid var(--line);
+  }
+  .topnav__inner {
+    max-width: 920px; margin: 0 auto;
+    padding: 0.85rem 1.25rem;
+    display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  }
+  .topnav__name {
+    font-family: var(--font-display); font-weight: 700; font-size: 0.98rem;
+    white-space: nowrap; color: var(--ink);
+  }
+  .topnav__links {
+    display: flex; gap: 1.4rem; overflow-x: auto; scrollbar-width: none;
+  }
+  .topnav__links::-webkit-scrollbar { display: none; }
+  .topnav__links a {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+    color: var(--ink-faint); text-decoration: none; white-space: nowrap; padding-bottom: 0.3rem;
+    border-bottom: 2px solid transparent; transition: color .15s ease, border-color .15s ease;
+  }
+  .topnav__links a:hover { color: var(--ink); }
+  .topnav__links a.active { color: var(--accent); border-color: var(--accent); }
+
+  .page { max-width: 920px; margin: 0 auto; padding: 0 1.25rem 5rem; }
+
+  /* ---------------- Hero ---------------- */
+  .hero { padding: 3rem 0 2.5rem; opacity: 0; transform: translateY(8px); animation: rise .6s ease-out .05s forwards; }
+  .hero .eyebrow {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--accent-bright); margin: 0 0 0.6rem;
+  }
+  .hero h1 {
+    font-family: var(--font-display); font-weight: 700; font-size: clamp(2.1rem, 5.6vw, 3.1rem);
+    line-height: 1.05; margin: 0 0 0.5rem; text-wrap: balance;
+  }
+  .hero .role { font-size: clamp(1rem, 2.4vw, 1.15rem); color: var(--ink-soft); margin: 0 0 1.4rem; }
+  .contact-row { display: flex; flex-wrap: wrap; gap: 0.55rem; }
+  .contact-row a, .contact-row span {
+    font-family: var(--font-mono); font-size: 0.78rem; padding: 0.4rem 0.7rem;
+    border: 1px solid var(--line-strong); color: var(--ink-soft); text-decoration: none;
+  }
+  .contact-row a:hover { color: var(--accent-bright); border-color: var(--accent); background: var(--accent-wash); }
+
+  /* ---------------- Section scaffolding ---------------- */
+  section { margin-top: 3.4rem; }
+  .section-head { display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 1.1rem; }
+  .section-head h2 {
+    font-family: var(--font-display); font-size: 1.05rem; letter-spacing: 0.02em; text-transform: uppercase; margin: 0;
+  }
+  .section-head::after { content: ""; flex: 1; height: 1px; background: var(--line); }
+  .section-sub { color: var(--ink-faint); font-size: 0.85rem; margin: -0.6rem 0 1.2rem; }
+
+  .summary p { font-size: 1.02rem; line-height: 1.75; color: var(--ink-soft); }
+  .summary p + p { margin-top: 1rem; }
+  .summary strong { color: var(--ink); font-weight: 600; }
+
+  /* ---------------- Stats ---------------- */
+  .stats { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+  @media (min-width: 620px) { .stats { grid-template-columns: repeat(4, 1fr); } }
+  .stat { background: var(--surface); padding: 1.4rem 1.1rem; }
+  .stat .num { font-family: var(--font-mono); font-variant-numeric: tabular-nums; font-size: clamp(1.5rem, 4vw, 1.9rem); color: var(--accent); font-weight: 600; }
+  .stat .label { margin-top: 0.35rem; font-size: 0.78rem; color: var(--ink-soft); line-height: 1.4; }
+
+  /* ---------------- Filter chips ---------------- */
+  .chiprow { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+  .chip {
+    font-family: var(--font-mono); font-size: 0.76rem; padding: 0.42rem 0.7rem;
+    border: 1px solid var(--line-strong); background: var(--surface); color: var(--ink-soft);
+    cursor: pointer; transition: all .15s ease;
+  }
+  .chip:hover { border-color: var(--accent); color: var(--ink); }
+  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
+  .chip.clear {
+    color: var(--accent-bright); border-style: dashed; display: none;
+  }
+  .chip.clear.show { display: inline-block; }
+
+  .skillmap { margin-top: 1.6rem; display: grid; grid-template-columns: 1fr; gap: 0.9rem; }
+  @media (min-width: 620px) { .skillmap { grid-template-columns: 1fr 1fr; } }
+  .skillmap .row { padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+  .skillmap dt { font-family: var(--font-mono); font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-faint); margin-bottom: 0.25rem; }
+  .skillmap dd { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
+  .skillmap dd .new-tool { color: var(--accent-bright); font-weight: 600; }
+
+  .grid-2 { display: grid; grid-template-columns: 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); margin-top: 1.6rem; }
+  @media (min-width: 620px) { .grid-2 { grid-template-columns: 1fr 1fr; } }
+  .card { background: var(--surface); padding: 1.1rem 1.3rem; }
+  .card .deg { font-family: var(--font-display); font-weight: 700; font-size: 0.98rem; margin-bottom: 0.2rem; }
+  .card .school { font-size: 0.85rem; color: var(--ink-soft); }
+  .card .yrs { font-family: var(--font-mono); font-size: 0.72rem; color: var(--accent-bright); margin-top: 0.35rem; display: block; }
+
+  /* ---------------- Experience / expandable ---------------- */
+  .exp-toolbar { display: flex; justify-content: flex-end; margin-bottom: 0.75rem; }
+  .exp-toolbar button {
+    font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.04em; text-transform: uppercase;
+    color: var(--accent-bright); background: none; border: none; cursor: pointer; padding: 0.2rem 0;
+  }
+  .exp-toolbar button:hover { text-decoration: underline; }
+
+  .job {
+    border: 1px solid var(--line);
+    border-left: 3px solid var(--accent);
+    background: var(--surface);
+    margin-bottom: 0.9rem;
+    transition: opacity .2s ease;
+  }
+  .job.no-match { opacity: 0.45; }
+
+  .job__header {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    background: none; border: none; text-align: left; cursor: pointer;
+    padding: 1rem 1.1rem;
+  }
+  .job__header:hover { background: var(--surface-2); }
+  .job__heading { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+  .job__title { font-family: var(--font-display); font-weight: 700; font-size: 1.08rem; color: var(--ink); }
+  .job__org { font-size: 0.85rem; color: var(--ink-soft); }
+  .job__org .loc { color: var(--ink-faint); }
+  .job__meta { display: flex; align-items: center; gap: 0.9rem; flex-shrink: 0; }
+  .job__dates { font-family: var(--font-mono); font-size: 0.74rem; color: var(--accent-bright); white-space: nowrap; }
+  .job__chevron {
+    width: 18px; height: 18px; flex-shrink: 0;
+    border: 1px solid var(--line-strong); border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--ink-faint); font-size: 0.7rem;
+    transition: transform .25s ease;
+  }
+  .job.open .job__chevron { transform: rotate(45deg); color: var(--accent); border-color: var(--accent); }
+
+  .job__blurb {
+    padding: 0 1.1rem 1rem;
+    font-size: 0.88rem; color: var(--ink-faint); font-style: italic;
+  }
+  .job.open .job__blurb { display: none; }
+
+  .job__body { max-height: 0; overflow: hidden; transition: max-height .3s ease; }
+  .job__bodyin { padding: 0 1.1rem 1.15rem; border-top: 1px solid var(--line); padding-top: 0.9rem; }
+  .job ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: 0.55rem; }
+  .job li {
+    position: relative; padding: 0.15rem 0.15rem 0.15rem 1.05rem;
+    font-size: 0.92rem; line-height: 1.55; color: var(--ink-soft);
+    transition: opacity .15s ease, background .15s ease;
+  }
+  .job li::before { content: "—"; position: absolute; left: 0; color: var(--ink-faint); }
+  .job li strong { color: var(--ink); font-weight: 600; }
+  .job li.dim { opacity: 0.32; }
+  .job li.match { background: var(--accent-wash); border-radius: 2px; }
+  .job li.match::before { color: var(--accent); }
+
+  /* ---------------- Footer ---------------- */
+  .signoff {
+    margin-top: 3.5rem; border: 1.5px solid var(--line-strong); background: var(--surface);
+    box-shadow: var(--shadow); padding: 2rem 1.75rem; text-align: center; border-radius: 4px;
+  }
+  .signoff h2 { font-family: var(--font-display); font-size: 1.35rem; margin: 0 0 0.6rem; text-wrap: balance; }
+  .signoff p { color: var(--ink-soft); max-width: 48ch; margin: 0 auto 1.4rem; line-height: 1.6; font-size: 0.95rem; }
+  .signoff .contacts { display: flex; flex-wrap: wrap; justify-content: center; gap: 0.6rem 0; }
+  .signoff .contacts a {
+    font-family: var(--font-mono); font-size: 0.88rem; text-decoration: none; color: var(--ink);
+    border: 1px solid var(--line-strong); padding: 0.55rem 1rem; margin: 0 0.3rem; display: inline-block;
+    transition: border-color .15s ease, color .15s ease, background .15s ease;
+  }
+  .signoff .contacts a:hover { border-color: var(--accent); color: var(--accent-bright); background: var(--page-bg); }
+
+  .reveal { opacity: 0; transform: translateY(10px); }
+  .reveal.in { animation: rise .5s ease-out forwards; }
+  @keyframes rise { to { opacity: 1; transform: translateY(0); } }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .hero, .reveal { animation: none !important; opacity: 1 !important; transform: none !important; }
+    .signoff .contacts a, .chip, .job__body, .job li { transition: none; }
+  }
+</style>
+
+<nav class="topnav">
+  <div class="topnav__inner">
+    <span class="topnav__name">Jega. K</span>
+    <div class="topnav__links" id="navLinks">
+      <a href="#summary" data-target="summary">Summary</a>
+      <a href="#impact" data-target="impact">Impact</a>
+      <a href="#experience" data-target="experience">Experience</a>
+      <a href="#skills" data-target="skills">Skills</a>
+      <a href="#contact" data-target="contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<div class="page">
+
+  <header class="hero" id="top">
+    <p class="eyebrow">Curriculum Vitae · Senior HR Professional</p>
+    <h1>Jega Gowdaman Kanagaraj</h1>
+    <p class="role">HR Generalist — UAE &amp; KSA, 14+ years across the GCC and India</p>
+    <div class="contact-row">
+      <span>Dubai, UAE</span>
+      <a href="tel:+971556209590">+971 55 620 9590</a>
+      <a href="tel:+918056062442">+91 805 606 2442</a>
+      <a href="mailto:jegagowdaman@gmail.com">jegagowdaman@gmail.com</a>
+      <a href="https://www.linkedin.com/in/jega-gowdaman-kanagaraj/" target="_blank" rel="noopener">LinkedIn ↗</a>
+    </div>
+  </header>
+
+  <section id="summary" class="summary reveal">
+    <div class="section-head"><h2>Summary</h2></div>
+    <p>Results-driven Senior HR Professional with progressive, cross-border experience across the Engineering Design and Oil &amp; Energy sectors. Currently leads a <strong>4-person HR team at Alucor Limited</strong>, delivering end-to-end HR generalist services for a multinational workforce of <strong>3,500+ employees</strong> across UAE, KSA, and India, while overseeing monthly HR costing and budgeting of <strong>AED 15M+</strong>.</p>
+    <p>Career background includes leading a 6-person HR shared-services team supporting <strong>12,000+ employees</strong> across the Middle East and Africa region at WS Atkins (AtkinsRealis / SNC-Lavalin), and HR operations supporting a workforce of <strong>8,000+ employees</strong> at Saudi Arabian Kentz during large-scale EPC project mobilizations. Fluent across Workday, ServiceNow, and Oracle HRMS, with an MBA in Human Resources and full working knowledge of UAE and Saudi Labour Law.</p>
+  </section>
+
+  <section id="impact" class="reveal">
+    <div class="section-head"><h2>Impact, in numbers</h2></div>
+    <div class="stats">
+      <div class="stat"><div class="num" data-count="14" data-suffix="+">0</div><div class="label">Years of progressive HR experience</div></div>
+      <div class="stat"><div class="num" data-count="3500" data-suffix="+">0</div><div class="label">Employees supported today, UAE / KSA / India</div></div>
+      <div class="stat"><div class="num" data-count="12000" data-suffix="+">0</div><div class="label">MEA workforce covered at peak (WS Atkins)</div></div>
+      <div class="stat"><div class="num" data-prefix="AED " data-count="15" data-suffix="M+">AED 0</div><div class="label">Monthly HR budget overseen</div></div>
+    </div>
+  </section>
+
+  <section id="experience" class="reveal">
+    <div class="section-head"><h2>Experience</h2></div>
+    <p class="section-sub">Click a role to expand it — or filter by skill below to jump straight to the relevant bullets.</p>
+    <div class="exp-toolbar"><button type="button" id="expandAllBtn">Expand all</button></div>
+
+    <article class="job open" data-default-open="true">
+      <button class="job__header" type="button" aria-expanded="true">
+        <span class="job__heading">
+          <span class="job__title">HR Generalist — UAE and KSA</span>
+          <span class="job__org">Alucor Limited <span class="loc">· Dubai, UAE</span></span>
+        </span>
+        <span class="job__meta"><span class="job__dates">June 2024 — Present</span><span class="job__chevron">+</span></span>
+      </button>
+      <p class="job__blurb">Leading HR generalist services for 3,500+ employees across UAE, KSA &amp; India, with AED 15M+ monthly budget oversight.</p>
+      <div class="job__body">
+        <div class="job__bodyin">
+          <ul>
+            <li data-tags="leadership">Lead and mentor a team of <strong>4 HR professionals</strong>, overseeing HR service delivery for a multinational workforce of 3,500+ employees across UAE, KSA, and India.</li>
+            <li data-tags="onboarding-exit,labour-law">Oversee end-to-end onboarding and offboarding for 3,500+ employees, ensuring <strong>100% legally compliant</strong> separations per UAE and KSA labour law.</li>
+            <li data-tags="talent-acquisition">Coordinate recruitment logistics for <strong>150+ hires annually</strong>; reduced average time-to-fill by <strong>20%</strong>.</li>
+            <li data-tags="payroll">Execute zero-error payroll processing for 3,500+ employees monthly across UAE and KSA entities.</li>
+            <li data-tags="budgeting">Run cost center analysis across UAE, KSA &amp; India, preparing HR cost reports covering a monthly budget of <strong>AED 15M+</strong> for leadership.</li>
+            <li data-tags="budgeting,performance">Support the annual budgeting cycle for appraisals and bonus disbursements totaling <strong>AED 5M+</strong> with Finance and senior management.</li>
+            <li data-tags="benefits">Manage end-to-end insurance renewal for 3,500+ employees' medical and life programs, negotiating <strong>10% cost savings</strong> with uninterrupted coverage.</li>
+            <li data-tags="hris">Maintain 100% HRIS data integrity across 3,500+ employee records through continuous auditing.</li>
+            <li data-tags="performance">Drive the annual performance evaluation cycle, coaching 50+ managers; achieved <strong>95% on-time completion</strong>.</li>
+            <li data-tags="employee-relations">Mediate 30+ complex employee relations cases annually, sustaining a positive, inclusive workplace culture.</li>
+            <li data-tags="leadership">Contribute to organizational restructuring affecting 100+ roles and develop SOPs that improved operational efficiency by <strong>15%</strong>.</li>
+            <li data-tags="labour-law">Liaise with PRO and government relations teams on visa processing, labour card renewals, and Emiratization / Nitaqat compliance.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="job" data-default-open="false">
+      <button class="job__header" type="button" aria-expanded="false">
+        <span class="job__heading">
+          <span class="job__title">Senior HR Associate — MEA Region</span>
+          <span class="job__org">WS Atkins (India) Pvt. Ltd. — SNC-Lavalin / AtkinsRealis <span class="loc">· Bangalore, India</span></span>
+        </span>
+        <span class="job__meta"><span class="job__dates">Jan 2021 — May 2024</span><span class="job__chevron">+</span></span>
+      </button>
+      <p class="job__blurb">Led a 6-person shared-services team supporting 12,000+ employees across the Middle East and Africa region.</p>
+      <div class="job__body">
+        <div class="job__bodyin">
+          <ul>
+            <li data-tags="leadership">Led a team of <strong>6 HR shared-services associates</strong> delivering support across the Middle East and Africa region for <strong>12,000+ employees</strong>.</li>
+            <li data-tags="employee-relations,hris">Managed and resolved 500+ complex employee inquiries monthly via ServiceNow, maintaining <strong>95%+ SLA compliance</strong>.</li>
+            <li data-tags="leadership">Served as primary HR point of contact for MEA stakeholders across <strong>10+ countries</strong>.</li>
+            <li data-tags="performance">Identified trends across HRSS delivery meetings that drove a <strong>20% improvement</strong> in process turnaround time.</li>
+            <li data-tags="hris">Conducted quality checks and system audits across 12,000+ employee records, reducing regional data error rates.</li>
+            <li data-tags="onboarding-exit">Managed end-of-service transitions for 800+ employees annually, including EOSB calculations and formal correspondence.</li>
+            <li data-tags="labour-law,employee-relations">Ensured strict Saudi Labour Law compliance for departing-employee cases, resolving 25+ cases with <strong>zero escalations</strong>.</li>
+            <li data-tags="leadership">Trained and onboarded new shared-services team members on case management and regional compliance.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="job" data-default-open="false">
+      <button class="job__header" type="button" aria-expanded="false">
+        <span class="job__heading">
+          <span class="job__title">HR Assistant — KSA Operations</span>
+          <span class="job__org">Saudi Arabian Kentz Co. Ltd. — SNC-Lavalin / AtkinsRealis <span class="loc">· Al-Khobar, Saudi Arabia</span></span>
+        </span>
+        <span class="job__meta"><span class="job__dates">Sep 2015 — Dec 2020</span><span class="job__chevron">+</span></span>
+      </button>
+      <p class="job__blurb">HR operations supporting 8,000+ employees through large-scale EPC project mobilizations in KSA.</p>
+      <div class="job__body">
+        <div class="job__bodyin">
+          <ul>
+            <li data-tags="leadership">Supported HR operations for <strong>8,000+ employees</strong> across large-scale EPC projects in the Kingdom of Saudi Arabia.</li>
+            <li data-tags="talent-acquisition">Coordinated recruitment logistics for <strong>400+ hires annually</strong>, from interview scheduling through offer issuance.</li>
+            <li data-tags="talent-acquisition">Managed international mobilization for 400+ new hires from <strong>15+ nationalities</strong> — visa stamping, travel, deployment.</li>
+            <li data-tags="onboarding-exit">Conducted orientations for 400+ new employees annually and facilitated project assignments.</li>
+            <li data-tags="onboarding-exit">Managed exit formalities for 300+ employees, coordinating with POLO for Filipino national employees.</li>
+            <li data-tags="hris">Maintained accurate HRMS data entry for 8,000+ employee records to support planning and decision-making.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="job" data-default-open="false">
+      <button class="job__header" type="button" aria-expanded="false">
+        <span class="job__heading">
+          <span class="job__title">HR Executive</span>
+          <span class="job__org">Amazing Innovative Engineering <span class="loc">· Chennai, India</span></span>
+        </span>
+        <span class="job__meta"><span class="job__dates">May 2014 — Aug 2015</span><span class="job__chevron">+</span></span>
+      </button>
+      <p class="job__blurb">Time office and grievance-resolution HR support for a 300+ employee workforce.</p>
+      <div class="job__body">
+        <div class="job__bodyin">
+          <ul>
+            <li data-tags="payroll">Managed time office operations for accurate attendance tracking and payroll inputs across a 300+ employee workforce.</li>
+            <li data-tags="labour-law">Maintained statutory compliance files and registers under the Factories Act and applicable local labour regulations.</li>
+            <li data-tags="employee-relations">Resolved 10+ day-to-day employee grievances monthly, building a responsive HR support function.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+
+    <article class="job" data-default-open="false">
+      <button class="job__header" type="button" aria-expanded="false">
+        <span class="job__heading">
+          <span class="job__title">Junior Officer — HR and Administration</span>
+          <span class="job__org">Dynamatic Technologies Limited <span class="loc">· Chennai, India</span></span>
+        </span>
+        <span class="job__meta"><span class="job__dates">Jun 2012 — Apr 2014</span><span class="job__chevron">+</span></span>
+      </button>
+      <p class="job__blurb">Time office, recruitment and safety-compliance HR support for a 1,200+ employee factory workforce.</p>
+      <div class="job__body">
+        <div class="job__bodyin">
+          <ul>
+            <li data-tags="payroll,labour-law">Managed time office functions and statutory HR compliance files for a factory workforce of <strong>1,200+ employees</strong>.</li>
+            <li data-tags="talent-acquisition">Executed recruitment activities for 50+ entry-level hires annually with the Training and Development team.</li>
+            <li data-tags="labour-law">Monitored adherence to safety protocols on the factory floor, ensuring regulatory compliance.</li>
+          </ul>
+        </div>
+      </div>
+    </article>
+  </section>
+
+  <section id="skills" class="reveal">
+    <div class="section-head"><h2>Filter experience by skill</h2></div>
+    <p class="section-sub">Click a skill to highlight where it shows up across every role above.</p>
+    <div class="chiprow" id="filterChips">
+      <button class="chip" type="button" data-filter="payroll">Payroll &amp; Compliance</button>
+      <button class="chip" type="button" data-filter="budgeting">HR Budgeting &amp; Cost Analysis</button>
+      <button class="chip" type="button" data-filter="leadership">Team Leadership</button>
+      <button class="chip" type="button" data-filter="employee-relations">Employee Relations</button>
+      <button class="chip" type="button" data-filter="talent-acquisition">Talent Acquisition &amp; Mobilization</button>
+      <button class="chip" type="button" data-filter="performance">Performance Management</button>
+      <button class="chip" type="button" data-filter="hris">HRIS &amp; Data Integrity</button>
+      <button class="chip" type="button" data-filter="benefits">Benefits &amp; Insurance</button>
+      <button class="chip" type="button" data-filter="labour-law">Labour Law (UAE / KSA)</button>
+      <button class="chip" type="button" data-filter="onboarding-exit">Onboarding &amp; Exit Mgmt</button>
+      <button class="chip clear" type="button" id="clearFilters">Clear filters ✕</button>
+    </div>
+
+    <dl class="skillmap">
+      <div class="row"><dt>HRMS / ERP</dt><dd>Workday · ServiceNow · Oracle HRMS · HRIS Administration</dd></div>
+      <div class="row"><dt>Productivity</dt><dd>Word · Excel · PowerPoint · Outlook · Power BI · <span class="new-tool">Claude AI</span></dd></div>
+      <div class="row"><dt>Languages</dt><dd>English (fluent) · Tamil (native) · Hindi (conversational)</dd></div>
+      <div class="row"><dt>Compliance</dt><dd>UAE &amp; Saudi Labour Law · POLO Regulations · KSA Nitaqat</dd></div>
+    </dl>
+
+    <div class="grid-2">
+      <div class="card">
+        <div class="deg">MBA — Human Resources</div>
+        <div class="school">Rajalakshmi Engineering College, Anna University, Chennai</div>
+        <span class="yrs">2010 — 2012</span>
+      </div>
+      <div class="card">
+        <div class="deg">B.Tech — Information Technology</div>
+        <div class="school">National Engineering College, Anna University, Chennai</div>
+        <span class="yrs">2006 — 2010</span>
+      </div>
+      <div class="card">
+        <div class="deg">HR as a Strategic Business Partner</div>
+        <div class="school">LinkedIn Learning certification</div>
+        <span class="yrs">December 2025</span>
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact" class="signoff reveal">
+    <h2>Open to Senior HR &amp; HR Business Partner roles across the GCC</h2>
+    <p>Based in Dubai, UAE, with deep operating experience across the UAE, KSA, and India. Available to discuss opportunities directly.</p>
+    <div class="contacts">
+      <a href="mailto:jegagowdaman@gmail.com">jegagowdaman@gmail.com</a>
+      <a href="tel:+971556209590">+971 55 620 9590</a>
+      <a href="https://www.linkedin.com/in/jega-gowdaman-kanagaraj/" target="_blank" rel="noopener">LinkedIn Profile</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  (function () {
+    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+    /* Reveal on scroll */
+    var reveals = document.querySelectorAll('.reveal');
+    if (reduceMotion || !('IntersectionObserver' in window)) {
+      reveals.forEach(function (el) { el.classList.add('in'); });
+    } else {
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { entry.target.classList.add('in'); io.unobserve(entry.target); }
+        });
+      }, { threshold: 0.08 });
+      reveals.forEach(function (el) { io.observe(el); });
+    }
+
+    /* Count-up stats */
+    var nums = document.querySelectorAll('.stat .num');
+    function animateNum(el) {
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      var prefix = el.getAttribute('data-prefix') || '';
+      var suffix = el.getAttribute('data-suffix') || '';
+      if (reduceMotion) { el.textContent = prefix + target.toLocaleString('en-US') + suffix; return; }
+      var start = null, duration = 1000;
+      function step(ts) {
+        if (!start) start = ts;
+        var progress = Math.min((ts - start) / duration, 1);
+        var eased = 1 - Math.pow(1 - progress, 3);
+        el.textContent = prefix + Math.round(target * eased).toLocaleString('en-US') + suffix;
+        if (progress < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+    if (!('IntersectionObserver' in window)) {
+      nums.forEach(animateNum);
+    } else {
+      var statIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) { animateNum(entry.target); statIo.unobserve(entry.target); }
+        });
+      }, { threshold: 0.4 });
+      nums.forEach(function (el) { statIo.observe(el); });
+    }
+
+    /* Scrollspy nav */
+    var navLinks = Array.prototype.slice.call(document.querySelectorAll('#navLinks a'));
+    var spySections = ['summary', 'impact', 'experience', 'skills', 'contact']
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+    if ('IntersectionObserver' in window) {
+      var spyIo = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            navLinks.forEach(function (a) { a.classList.remove('active'); });
+            var match = navLinks.filter(function (a) { return a.dataset.target === entry.target.id; })[0];
+            if (match) match.classList.add('active');
+          }
+        });
+      }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+      spySections.forEach(function (el) { spyIo.observe(el); });
+    }
+
+    /* Expand / collapse job cards */
+    var jobs = Array.prototype.slice.call(document.querySelectorAll('.job'));
+    function setJobOpen(job, open) {
+      var body = job.querySelector('.job__body');
+      var header = job.querySelector('.job__header');
+      job.classList.toggle('open', open);
+      header.setAttribute('aria-expanded', open ? 'true' : 'false');
+      if (open) { body.style.maxHeight = body.scrollHeight + 'px'; }
+      else { body.style.maxHeight = '0px'; }
+    }
+    jobs.forEach(function (job) {
+      var header = job.querySelector('.job__header');
+      var open = job.getAttribute('data-default-open') === 'true';
+      setJobOpen(job, open);
+      header.addEventListener('click', function () {
+        setJobOpen(job, !job.classList.contains('open'));
+      });
+    });
+    window.addEventListener('resize', function () {
+      jobs.forEach(function (job) {
+        if (job.classList.contains('open')) {
+          var body = job.querySelector('.job__body');
+          body.style.maxHeight = body.scrollHeight + 'px';
+        }
+      });
+    });
+
+    /* Skill filtering */
+    var chips = Array.prototype.slice.call(document.querySelectorAll('.chip[data-filter]'));
+    var clearBtn = document.getElementById('clearFilters');
+    var activeFilters = [];
+
+    function applyFilters() {
+      clearBtn.classList.toggle('show', activeFilters.length > 0);
+
+      if (activeFilters.length === 0) {
+        document.querySelectorAll('.job li').forEach(function (li) { li.classList.remove('dim', 'match'); });
+        jobs.forEach(function (job) {
+          job.classList.remove('no-match', 'has-match');
+          setJobOpen(job, job.getAttribute('data-default-open') === 'true');
+        });
+        return;
+      }
+
+      jobs.forEach(function (job) {
+        var items = Array.prototype.slice.call(job.querySelectorAll('li'));
+        var anyMatch = false;
+        items.forEach(function (li) {
+          var tags = (li.getAttribute('data-tags') || '').split(',');
+          var isMatch = tags.some(function (t) { return activeFilters.indexOf(t) !== -1; });
+          li.classList.toggle('match', isMatch);
+          li.classList.toggle('dim', !isMatch);
+          if (isMatch) anyMatch = true;
+        });
+        job.classList.toggle('has-match', anyMatch);
+        job.classList.toggle('no-match', !anyMatch);
+        setJobOpen(job, anyMatch);
+      });
+    }
+
+    chips.forEach(function (chip) {
+      chip.addEventListener('click', function () {
+        var f = chip.getAttribute('data-filter');
+        var idx = activeFilters.indexOf(f);
+        if (idx === -1) { activeFilters.push(f); chip.classList.add('active'); }
+        else { activeFilters.splice(idx, 1); chip.classList.remove('active'); }
+        applyFilters();
+      });
+    });
+    clearBtn.addEventListener('click', function () {
+      activeFilters = [];
+      chips.forEach(function (c) { c.classList.remove('active'); });
+      applyFilters();
+    });
+
+    /* Expand all / collapse all */
+    var expandAllBtn = document.getElementById('expandAllBtn');
+    var allOpen = false;
+    expandAllBtn.addEventListener('click', function () {
+      allOpen = !allOpen;
+      jobs.forEach(function (job) { setJobOpen(job, allOpen); });
+      expandAllBtn.textContent = allOpen ? 'Collapse all' : 'Expand all';
+    });
+  })();
+</script>
